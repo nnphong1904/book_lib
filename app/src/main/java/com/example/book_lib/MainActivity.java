@@ -14,10 +14,11 @@ public class MainActivity extends AppCompatActivity implements BookAdapter.ItemC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (findViewById(R.id.landscape_layout)!=null){
-            nameFrag=findViewById(R.id.nameBookFrag);
-            authorFrag=findViewById(R.id.authorFrag);
-            summaryFrag=findViewById(R.id.summaryFrag);
+        if (findViewById(R.id.landscape_layout)!=null) {
+            System.out.println("Landscape mode");
+            nameFrag = findViewById(R.id.nameBookFrag);
+            authorFrag = findViewById(R.id.authorFrag);
+            summaryFrag = findViewById(R.id.summaryFrag);
             onItemClicked(0);
         }
 

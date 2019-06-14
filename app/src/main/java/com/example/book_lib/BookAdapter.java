@@ -19,9 +19,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private ArrayList<Book> books;
     private RecyclerView mRecylerview;
     private Context myContext;
-    private int landscape=2131165268;
-    private int portrait=2131165269;
+    public static final String EXTRA_INDEX="com.example.book_lib.EXTRA_INDEX";
+    private int landscape=2131165269;
+    private int portrait=2131165270;
     ItemClicked activity;
+
     public interface ItemClicked{
         void onItemClicked(int index);
     }
@@ -44,19 +46,22 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//
                     if (mRecylerview.getId()==landscape)
                     {
-                        System.out.println("Landscape mode");
                         activity.onItemClicked(books.indexOf((Book) itemView.getTag()));
 
                     }
                     else {
-                        System.out.println("Portrait mode");
-                        activity.onItemClicked(books.indexOf((Book) itemView.getTag()));
+                        int bookIndex=books.indexOf(itemView.getTag());
                         Intent intent=new Intent(myContext,Second_activity_portrait.class);
+                        intent.putExtra(EXTRA_INDEX,bookIndex);
                         myContext.startActivity(intent);
+                        System.out.println("books code: "+books.indexOf(itemView.getTag()));
 
                     }
+
+
 
 
                 }
