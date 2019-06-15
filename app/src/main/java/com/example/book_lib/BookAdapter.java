@@ -20,7 +20,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private RecyclerView mRecylerview;
     private Context myContext;
     public static final String EXTRA_INDEX="com.example.book_lib.EXTRA_INDEX";
-    private int landscape=2131165271;
+    private int landscape=2131165279;
     ItemClicked activity;
 
     public interface ItemClicked{
@@ -54,9 +54,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println(mRecylerview.getId());
+                    System.out.println("New ID: "+mRecylerview.getId());
                     if (mRecylerview.getId()==landscape)
                     {
+
                         activity.onItemClicked(books.indexOf((Book) itemView.getTag()));
 
                     }

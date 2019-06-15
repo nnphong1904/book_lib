@@ -14,7 +14,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/bookcover" />
     <TextView
-        android:layout_marginTop="10dp"
         android:typeface="serif"
         android:id="@+id/titleapp"
         android:layout_width="match_parent"
@@ -33,26 +32,37 @@
         android:layout_height="291dp"
         android:orientation="horizontal">
 
+
         <fragment
             android:id="@+id/listLandscape"
             android:name="com.example.book_lib.BookListFrag"
             android:layout_width="50dp"
-            android:layout_height="255dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
             android:layout_weight="1"
             tools:layout="@layout/fragment_book_list" />
-
-
-
+        <FrameLayout
+            android:layout_width="290dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <fragment
-                android:id="@+id/fragment2"
+                android:id="@+id/fragment3"
                 android:name="com.example.book_lib.DetailsFrag"
-                android:layout_width="290dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
                 tools:layout="@layout/fragment_details2" />
-
-
+            <ImageButton
+                android:id="@+id/addBtnLandscape"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/button_background"
+                android:src="@drawable/ic_button"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="50dp"/>
+        </FrameLayout>
 
     </LinearLayout>
 
