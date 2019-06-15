@@ -20,8 +20,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private RecyclerView mRecylerview;
     private Context myContext;
     public static final String EXTRA_INDEX="com.example.book_lib.EXTRA_INDEX";
-    private int landscape=2131165269;
-    private int portrait=2131165270;
+    private int landscape=2131165271;
     ItemClicked activity;
 
     public interface ItemClicked{
@@ -42,11 +41,20 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
-            bookName=itemView.findViewById(R.id.bookName);
+            if (mRecylerview.getId()==landscape)
+            {
+                System.out.println(itemView.findViewById(R.id.bookName));
+                bookName=itemView.findViewById(R.id.bookName);
+            }
+            else {
+                itemView.findViewById(R.id.bookNamePortrait);
+                bookName=itemView.findViewById(R.id.bookNamePortrait);
+            }
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//
+                    System.out.println(mRecylerview.getId());
                     if (mRecylerview.getId()==landscape)
                     {
                         activity.onItemClicked(books.indexOf((Book) itemView.getTag()));
@@ -72,8 +80,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     @NonNull
     @Override
     public BookAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rowlayout,viewGroup,false);
-
+        View v;
+        if (mRecylerview.getId()==landscape) {
+            v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rowlayout, viewGroup, false);
+        }
+        else {
+            v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rowlayout_portrait, viewGroup, false);
+        }
         return new ViewHolder(v);
     }
 
