@@ -46,4 +46,7 @@ public class BookListFrag_Portrait extends Fragment {
         myAdapter=new BookAdapter(this.getActivity(),ApplicationClass.bookArrayList);
         recyclerView.setAdapter(myAdapter);
     }
+    public void notifyDataChanged(){
+        myAdapter.notifyDataSetChanged();
+    }
 }
